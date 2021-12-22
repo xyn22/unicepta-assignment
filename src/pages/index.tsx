@@ -10,7 +10,7 @@ import Root from './styles';
 const NASA_API_KEY = process.env.REACT_APP_NASA_API_KEY;
 const Index = () => {
   const [viewingImage, setViewingImage] = useState<string>('');
-  const [q, setQ] = useState<string>('test');
+  const [q, setQ] = useState<string>('nasa');
   const { isLoading, error, data } = useQuery<APISearchResponse>('images', () =>
     fetch(`https://images-api.nasa.gov/search?q=${q}`).then(res =>
       res.json()
@@ -28,8 +28,8 @@ const Index = () => {
 
   return (
     <Root>
-      { images && <List images={ images } onImageClick={ setViewingImage } /> }
       { imageData && <DetailedView data={ imageData } /> }
+      { images && <List images={ images } onImageClick={ setViewingImage } /> }
     </Root>
   );
 }

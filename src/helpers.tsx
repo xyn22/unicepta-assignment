@@ -1,7 +1,6 @@
 import { APISearchResponse, Image } from './types';
 
 export const parseAPIresponse = (response: APISearchResponse): Image[] => {
-  debugger;
   return response.collection.items.map<Image>((item) => {
     const [data] = item.data;
     const [links] = item.links;
