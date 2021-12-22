@@ -20,7 +20,7 @@ const Index = () => {
       enabled: searchString.length !== 0,
     }
   );
-  const images = useMemo(() => data && parseAPIresponse(data), [data]);
+  const images = useMemo(() => data && parseAPIresponse(data).filter((image) => image.href), [data]);
   
   useEffect(() => {
     const storedSearchValue = localStorage.getItem('searchValue');
@@ -34,14 +34,14 @@ const Index = () => {
     setSearchString(value);
   }
 
-  const imageData = images && viewingImage && images.find((image) => image.nasaId === viewingImage);
+  const viewingImageData = images && viewingImage && images.find((image) => image.nasaId === viewingImage);
   if (error) {
     return <Error message={ error as string } />
   }
 
   return (
     <Root>
-      { imageData && <DetailedView data={ imageData } onCollapse={ () => setViewingImage('') } /> }
+      { viewingImageData && <DetailedView data={ viewingImageData } onCollapse={ () => setViewingImage('') } /> }
       <MainList>
         <Search value={ searchString } onChange={ saveSearchString} />
         { (isLoading) && <Spinner /> }
