@@ -6,6 +6,7 @@ export const Images = styled.ul`
   justify-content: center;
   list-style: none;
   background: #ccc;
+  margin: 0;
   li {
     border: solid 1px;
     margin: 20px;
