@@ -20,7 +20,7 @@ const Index = () => {
       enabled: searchString.length !== 0,
     }
   );
-  const images = useMemo(() => data && parseAPIresponse(data).filter((image) => image.href), [data]);
+  const images = useMemo(() => data && parseAPIresponse(data), [data]);
   
   useEffect(() => {
     const storedSearchValue = localStorage.getItem('searchValue');

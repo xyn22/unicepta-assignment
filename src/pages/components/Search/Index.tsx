@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Root from './styles';
 
 interface Props {
@@ -8,6 +8,9 @@ interface Props {
 
 const Search = ({ value, onChange }: Props) => {
   const [inputValue, setInputValue] = useState(value);
+  useEffect(() => {
+    setInputValue(value);
+  }, [value])
   return (
     <Root>
       <input
